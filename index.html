@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hips Don't Lie</title>
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+    <script src="https://unpkg.com/scrollama"></script>
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="icon" type="image/png" href="favicon.png">
+    
+</head>
+<body>
+
+    <main>
+
+        <section id="intro" class="section">
+            <div class="content intro-content">
+                <h3 id="hook-text"></h3>
+        
+                <div id="rest-of-intro" class="hidden-intro">
+                    <h1>Hips Don’t Lie</h1>
+                    <p>Imagine standing on a city street...As the world sways back and forth and Mozart crescendos in your ears, your body begins to shift. Is this the secret to improving stability, or a recipe for imbalance?</p>
+                    <p>Scroll down to explore how music and virtual reality can destabilize your body, and how this might be used to help prevent falls.</p>
+                    <p class="team-name"><b>Abhinav Chinnam, Atherv Vidhate, Pranav Rajaram, Zubin Sannakkayala</b></p>
+
+                </div>
+            </div>
+        </section>
+        
+        
+
+
+        <section id="background" class="section">
+            <div class="content">
+
+                <h2>What We Know About Balance</h2>
+                <p>Our bodies rely on vision, hearing, and touch to stay balanced. Virtual reality has been shown to increase body sway by fooling the eyes with moving environments. Similarly, music might influence sway by giving subtle rhythmic cues to the brain.
+                    Haven't we all subconsciously swayed to the beat of our favorite song?
+                </p>
+                <p>But, few researchers have asked what happens when these senses are combined. Could rhythmic music synced with VR motion amplify the effect, causing even greater instability?</p>
+
+                <h2>The Study</h2>
+
+                <p>Therefore, this study examined how music and virtual reality affects body sway, which is the natural movement of the body while standing. 
+                    28 participants stood on a balance platform that measured their Center Of Pressure (COP) movement in the x and y directions, indicating how much the body moved (specifically, how the balance in the feet shifted). 
+                </p>
+        
+                <p> They experienced different combinations of visual conditions (eyes closed, looking at VR) and music conditions (listening to Mozart's Jupiter Symphony). 
+                </p>
+        
+                <p>Researchers hypothesized that music and VR motion would increase body sway, potentially providing insights into new balance training methods for older adults and individuals at risk of falls. 
+                    Keep reading to see the results!
+                </p>
+                <button id="popupButton" class="sleek-button">Click to see the VR setting and listen to the music!</button>
+                <div id="popup" class="popup hidden">
+                    <span class="close">&times;</span>
+                    <img src="assets/image.png" alt="Description of image" class="popup-content">
+                    <audio controls class="audio-player">
+                        <source src="assets/mozart.mp3" type="audio/mpeg">
+                        Your browser does not support the audio element.
+                    </audio>
+                </div>
+
+
+            </div>
+        </section>
+
+        <section id="scrolly" class="section">
+            <div class="sticky-graphic">
+
+                    <div id="controls">
+                        <label for="participantSelector">Select Participant:</label>
+                        <select id="participantSelector"></select>
+                    </div>
+                <div id="visualization"></div>
+            </div>
+            
+            <div class="scroll-sections">
+                <div class="step" data-step="1" id="control">
+                    <div class="content" >
+                        <h2>Control: Eyes Closed, No Music</h2>
+                        <p>Participants stood for 1 minute with their eyes closed, and their body movements were measured.</p>
+                        <p>Click the play button to see movement over the course of 1 minute. Hover over the body to see the exact COPx and COPy values, and try switching between different participants! Take a look below for a graphical representation of the movement you see.</p>
+                        <p>You'll notice that there isn't a whole lot of movement happening.</p>
+                    </div>
+                </div>
+                
+                <div class="step" data-step="2" id="condition1">
+                    <div class="content">
+                        <h2>Condition 1: Eyes Closed with Mozart’s Jupiter</h2>
+                        <p>Participants closed their eyes while listening to Mozart's Jupiter Symphony.</p>
+                        <p>Click the play button to see movement over the course of 1 minute. Hover over the body to see the exact COPx and COPy values, and try switching between different participants! Take a look below for a graphical representation of the movement you see.</p>
+                        <p>You'll notice that there is much more movement than the control group.</p>
+                    </div>
+                </div>
+
+                <div class="step" data-step="3" id="condition2">
+                    <div class="content">
+                        <h2>Condition 2: VR Motion Only</h2>
+                        <p>Participants looked at VR moving environments without music.</p>
+                        <p>Click the play button to see movement over the course of 1 minute. Hover over the body to see the exact COPx and COPy values, and try switching between different participants! Take a look below for a graphical representation of the movement you see.</p>
+                        <p>You'll see even more sway compared to music only.</p>
+                    </div>
+                </div>
+                
+                <div class="step" data-step="4" id="condition3">
+                    <div class="content">
+                        <h2>Condition 3: VR + Mozart Combined</h2>
+                        <p>Participants experienced both VR motion and Mozart's Jupiter Symphony simultaneously.</p>
+                        <p>Click the play button to see movement over the course of 1 minute. Hover over the body to see the exact COPx and COPy values, and try switching between different participants! Take a look below for a graphical representation of the movement you see.</p>
+                        <p>This condition produces the most noticeable sway of them all!</p>
+                    </div>
+                </div>                
+                
+            </div>
+        </section>
+
+        <section class="step" id="permutation-test">
+            <div class="step-content">
+                <h2>Statistical Analysis: Is This Sway Statistically Significant?</h2>
+                <p>While the visualizations show clear differences in sway patterns between conditions, how can we be sure these aren’t due to random chance? To answer this, we conducted a permutation test, which is a statistical method that helps us determine if the increased movement under multisensory conditions is significant.</p>
+                <p>Specifically, we compared the sway (CoPx) between the control condition and the Music + VR condition. By randomly reassigning sway measurements between these two groups thousands of times, we built a distribution of possible outcomes under the null hypothesis (no true difference between groups).</p>
+                <div id="permutation-test-container"></div>
+                <p>Our observed difference lies far in the tail of this distribution, resulting in a low p-value. This means the likelihood of seeing such a large difference purely by chance is very small. In other words, introducing music and VR significantly impacts body sway.</p>
+                <p>Through this analysis, we move beyond just seeing a difference. We can confidently say it is a real effect, supporting our broader narrative that multisensory environments like music and VR actively destabilize balance. This has relevant implications for designing treatments that use these sensory cues to improve body sway control.</p>
+            </div>
+        </section>
+
+        <section id="conclusion" class="section">
+            <div class="content">
+                <h2>Multisensory Environments Destabilize Us. That’s a Good Thing.</h2> 
+                <p>The main takeaway we want you to draw from this project is that combining virtual reality with rhythmic music can significantly increase body sway, meaning people become less stable when visual and auditory cues are synchronized. This matters because understanding how sensory cues impact balance is critical for developing interventions that improve stability and reduce fall risk, especially in vulnerable populations.</p>
+                <p>Our interactive visualizations make this clear by letting you directly explore sway patterns under different conditions: no stimuli (control), music only, VR motion only, and the powerful combination of both. The increasing range of motion and variability in Center of Pressure (COP) data shows just how sensitive our balance system is to multisensory environments.</p>
+                <p>By showing these sway patterns visually and backing them up with statistical evidence from the permutation test, our project demonstrates both the observable and measurable impact that multisensory environments have on the body’s equilibrium.</p>
+                <p>At the end of the day, your balance isn’t just about your legs. It’s how your brain integrates visual, auditory, and physical cues. By helping people safely experience destabilization in controlled multisensory environments, we can ultimately contribute to better balance training and fall prevention.</p>
+            </div>
+        </section>
+        
+        
+    </main>
+
+    <div id="tooltip" class="tooltip hidden"></div>
+
+    <div id="animation-controls" class="controls-container">
+        <button id="play-button" class="control-button">
+            <i class="fas fa-play"></i> Play
+        </button>
+        <div class="slider-container">
+            <input type="range" id="time-slider" min="0" max="1800" value="0" class="time-slider">
+            <div id="time-display" class="time-display">Time: 0s</div>
+        </div>
+    </div>
+
+    <script src="js/dataLoader.js"></script>
+    <script src="js/visualization.js"></script>
+    <script src="js/controls.js"></script>
+    <script src="js/lineGraph.js"></script>
+    <script src="js/permutationTest.js"></script>
+    <script src="js/tooltip.js"></script>
+    <script src="js/participantSelector.js"></script>
+    <script src="js/scroller.js"></script>
+    <script src="js/popup.js"></script>
+    <script src="js/main.js"></script>
+    <script src="js/hook.js"></script>
+
+</body>
+</html>
